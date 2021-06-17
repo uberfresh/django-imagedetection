@@ -1,0 +1,50 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="row justify-content-center">
+        <div class="col-5 justify-content-center text-center">
+            <H4>DETECTED IMAGE:{{post.image.name}}</H4>
+            <img class="w-75 img-thumbnail" src="/media/detected_{{post.image}}"><br>
+            <a href="/media/detected_{{post.image}}" class="btn btn-success" download>Download</a>
+        </div>
+        <div class="col-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Object</th>
+                        <th scope="col">Percentage Probabilty(%) </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for obj,per in res%}
+                    {%ifnotequal item "" %}
+                    <tr>
+                        <th scope="row"> {{ forloop.counter }}</th>
+                        <td>{{obj}}</td>
+                        <td>{{per}}</td>
+                    </tr>
+                    {%else%}
+                    <tr>
+                        <th scope="row"> 0</th>
+                        <td>No objects found!</td>
+                    </tr>
+                    {%endifnotequal%}
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>
+
+</html>
