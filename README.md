@@ -1,6 +1,6 @@
 # Image Detection with ImageAI module
 
-### Reuirements
+### Requirements
 
 1.Install tensowflow
 ```
